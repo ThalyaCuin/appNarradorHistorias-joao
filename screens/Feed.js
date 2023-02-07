@@ -7,19 +7,16 @@ import {
   Platform,
   StatusBar,
   Image
-} from "react-native";
+} from 'react-native';
 import { RFValue } from "react-native-responsive-fontsize";
 import StoryCard from "./StoryCard";
 
 
 import * as Font from "expo-font";
 import { FlatList } from "react-native-gesture-handler";
-import * as SplashScreen from 'expo-splash-screen';
+import * as SplashScreen from "expo-splash-screen";
 
 SplashScreen.preventAutoHideAsync();
-
-
-
 
 let customFonts = {
   "Bubblegum-Sans": require("../assets/fonts/BubblegumSans-Regular.ttf")
