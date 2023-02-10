@@ -10,7 +10,7 @@ import {
   ScrollView,
   TextInput,
   Dimensions
-} from 'react-native';
+} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import DropDownPicker from "react-native-dropdown-picker";
 

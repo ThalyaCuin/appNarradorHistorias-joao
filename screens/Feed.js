@@ -7,16 +7,13 @@ import {
   Platform,
   StatusBar,
   Image
-} from 'react-native';
+} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import StoryCard from "./StoryCard";
 
-
+import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 import { FlatList } from "react-native-gesture-handler";
-import * as SplashScreen from "expo-splash-screen";
-
-SplashScreen.preventAutoHideAsync();
 
 let customFonts = {
   "Bubblegum-Sans": require("../assets/fonts/BubblegumSans-Regular.ttf")
@@ -42,14 +39,15 @@ export default class Feed extends Component {
   }
 
   renderItem = ({ item: story }) => {
-    return <StoryCard story={story} />;
+    return <StoryCard story={story} navigation={this.props.navigation} />;
   };
 
   keyExtractor = (item, index) => index.toString();
 
   render() {
-    if (this.state.fontsLoaded) {
-      SplashScreen.hideAsync();
+    if (!this.state.fontsLoaded) {
+      return <AppLoading />;
+    } else {
       return (
         <View style={styles.container}>
           <SafeAreaView style={styles.droidSafeArea} />
@@ -71,6 +69,7 @@ export default class Feed extends Component {
               renderItem={this.renderItem}
             />
           </View>
+          <View style={{ flex: 0.08 }} />
         </View>
       );
     }
@@ -109,6 +108,6 @@ const styles = StyleSheet.create({
     fontFamily: "Bubblegum-Sans"
   },
   cardContainer: {
-    flex: 0.93
+    flex: 0.85
   }
 });
